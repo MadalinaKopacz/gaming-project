@@ -12,10 +12,10 @@ During the game, the player can collect a currency that can be spent in a shop f
 
 - Kopacz Mădălina-Elena (Team Leader)
 - Geamănu Andreea (Senior Coder)
-- Fălcescu Alexandru Antonio (member)
-- Năstase Matei-Dorian (member)
-- Negruț Maria Daniela (member)
-- Chiriac Octavian (member)
+- Fălcescu Alexandru Antonio (Member)
+- Năstase Matei-Dorian (Member)
+- Negruț Maria Daniela (Member)
+- Chiriac Andrei Octavian (Member)
 
   
 ## LAST STABLE VERSION:
