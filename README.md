@@ -28,6 +28,9 @@ During the game, the player can collect a currency that can be spent in a shop f
   We are looking forward to your feedback and you can send it using this Google form:
   \*insert link here\*
   
+## REPORTS:
+
+  \*insert reports here\*
   
 ## TASK MANAGEMENT:
 
