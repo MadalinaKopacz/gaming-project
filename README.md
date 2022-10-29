@@ -35,7 +35,7 @@ During the game, the player can collect a currency that can be spent in a shop f
 ## TASK MANAGEMENT:
 
   For task management, we use Jira.
-  ![image](https://user-images.githubusercontent.com/79279298/198848954-4343fa7e-f7c3-4f13-b0a2-ef2718142579.png)
+  ![image](https://user-images.githubusercontent.com/79279298/198848983-9e5dbf11-3211-4d9c-b0b5-99872e5e2533.png)
   
 
 ## ORHER MATERIALS
