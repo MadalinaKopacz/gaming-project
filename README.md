@@ -20,7 +20,7 @@ During the game, the player can collect a currency that can be spent in a shop f
   
 ## LAST STABLE VERSION:
 
-  \*insert link here\*
+  Our Last Stable Version is found on Production branch of this repository.
   
   
 ## FEEDBACK FORM:
@@ -30,12 +30,17 @@ During the game, the player can collect a currency that can be spent in a shop f
   
 ## REPORTS:
 
-  \*insert reports here\*
-  
+- For next sprint objectives:
+    - [ReportObjectives1.pdf](https://github.com/MadalinaKopacz/gaming-project/files/9896336/Raport.obiective.1.pdf)
+
+
+- For achieved objectives:
+
+
 ## TASK MANAGEMENT:
 
   For task management, we use Jira.
-  \*insert picture with the Jira board\*
+  ![image](https://user-images.githubusercontent.com/79279298/198848983-9e5dbf11-3211-4d9c-b0b5-99872e5e2533.png)
   
 
 ## ORHER MATERIALS
