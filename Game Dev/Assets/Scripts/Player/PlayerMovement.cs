@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpSize;
     [SerializeField] private float scale;
+    [SerializeField] private Transform firePoint;
 
     private Rigidbody2D body;
     private Animator animator;
@@ -22,10 +23,16 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(direction * speed, body.velocity.y);
 
         // flip the player when moving left-right
-        if (direction >= 0) 
+        if (direction >= 0)
+        {
             transform.localScale = scale * Vector3.one;
+            firePoint.localScale = Vector3.one;
+        }
         else
+        {
             transform.localScale = scale * new Vector3(-1, 1, 1);
+            firePoint.localScale = new Vector3(-1, 1, 1);
+        }
 
         if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
             Jump();
@@ -33,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         // set the running animation
         animator.SetBool("isRunning", direction != 0);
         animator.SetBool("isGrounded", isGrounded);
+        
     }
 
     private void Jump()
@@ -46,5 +54,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground")
             isGrounded = true;
+
     }
 }
