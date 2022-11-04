@@ -17,8 +17,8 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 direction = mousePos - transform.position;
-        Vector3 rotation = transform.position - mousePos;
+        Vector2 direction = mousePos - transform.position;
+        Vector2 rotation = transform.position - mousePos;
 
         rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
 

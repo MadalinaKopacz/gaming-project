@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class Rat : MonoBehaviour
 {
-    public int hp = 10;
-    public int damage = 20;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int hp = 10;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //to be implemented in the next sprint
+    //[SerializeField] private int damage = 20;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {

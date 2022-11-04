@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public int hp = 100;
+    [SerializeField] private int hp = 100;
 
     private bool isHit;
     private float timeSinceLastHit;
@@ -37,10 +37,6 @@ public class PlayerScript : MonoBehaviour
             if (hp <= 0)
             {
                 Debug.Log("Game Over!");
-            }
-            else
-            {
-                //nothing for now
             }
         }
     }

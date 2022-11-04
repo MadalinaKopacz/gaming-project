@@ -5,8 +5,8 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
 
-    public GameObject bulletPrefab;
-    public float fireRate;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float fireRate;
 
     private bool canFire = true;
     private float timer;
