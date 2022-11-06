@@ -36,6 +36,7 @@ During the game, the player can collect a currency that can be spent in a shop f
 
 
 - For achieved objectives:
+    - [AchievedObjectivesReport1.pdf](https://github.com/MadalinaKopacz/gaming-project/files/9946580/AchievedObjectivesRaport1.pdf)
 
 
 ## TASK MANAGEMENT:
