@@ -74,6 +74,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground")
             isGrounded = true;
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            
+        if(collision.gameObject.tag == "Rat")
+            isGrounded = true;
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
 
     }
 }
