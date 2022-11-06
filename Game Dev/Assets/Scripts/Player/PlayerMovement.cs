@@ -10,6 +10,12 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Animator animator;
     private bool isGrounded;
+    private bool isShooting = false;
+
+    public bool GetIsGrounded()
+    {
+        return isGrounded;
+    }
 
     private void Awake()
     {
@@ -34,8 +40,17 @@ public class PlayerMovement : MonoBehaviour
             firePoint.localScale = new Vector3(-1, 1, 1);
         }
 
-        if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) ) && isGrounded)
+        {
             Jump();
+        }
+        
+        if (Input.GetButtonDown("Fire1") && isGrounded)
+        {
+            isShooting = true;
+            Shoot();
+            isShooting = false;
+        }
 
         // set the running animation
         animator.SetBool("isRunning", direction != 0);
@@ -48,6 +63,11 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(body.velocity.x, jumpSize);
         animator.SetTrigger("jump");
         isGrounded = false;
+    }
+
+    private void Shoot()
+    {
+        animator.SetTrigger("shoot");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
