@@ -32,8 +32,7 @@ During the game, the player can collect a currency that can be spent in a shop f
 
 - For next sprint objectives:
     - [ObjectivesReport1.pdf](https://github.com/MadalinaKopacz/gaming-project/files/9896336/Raport.obiective.1.pdf)
-    - [ObjectivesReport2.pdf](https://github.com/MadalinaKopacz/gaming-project/files/9946352/ObjectivesReport2.1.3.pdf)
-
+    - [ObjectivesReport2.pdf](https://github.com/MadalinaKopacz/gaming-project/files/9946404/ObjectivesReport2.2.pdf)
 
 
 - For achieved objectives:
