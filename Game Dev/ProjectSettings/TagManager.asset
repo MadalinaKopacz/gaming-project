@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Bullet
+  - Rat
   layers:
   - Default
   - TransparentFX
@@ -43,4 +46,10 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obj close
+    uniqueID: 4134226673
+    locked: 0
+  - name: Player
+    uniqueID: 2917631319
     locked: 0
