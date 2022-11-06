@@ -9,18 +9,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D body;
     private Animator animator;
-    private bool isGrounded;
-    private bool isShooting = false;
-
-    public bool GetIsGrounded()
-    {
-        return isGrounded;
-    }
+    public bool IsGrounded { get; set; }
+    public bool IsShooting { get; set; }
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
+        IsShooting = false;
     }
 
     private void Update()
@@ -40,21 +36,21 @@ public class PlayerMovement : MonoBehaviour
             firePoint.localScale = new Vector3(-1, 1, 1);
         }
 
-        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) ) && isGrounded)
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) ) && IsGrounded)
         {
             Jump();
         }
         
-        if (Input.GetButtonDown("Fire1") && isGrounded)
+        if (Input.GetButtonDown("Fire1") && IsGrounded)
         {
-            isShooting = true;
+            IsShooting = true;
             Shoot();
-            isShooting = false;
+            IsShooting = false;
         }
 
         // set the running animation
         animator.SetBool("isRunning", direction != 0);
-        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isGrounded", IsGrounded);
         
     }
 
@@ -62,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     {
         body.velocity = new Vector2(body.velocity.x, jumpSize);
         animator.SetTrigger("jump");
-        isGrounded = false;
+        IsGrounded = false;
     }
 
     private void Shoot()
@@ -73,11 +69,11 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Ground")
-            isGrounded = true;
+            IsGrounded = true;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             
         if(collision.gameObject.tag == "Rat")
-            isGrounded = true;
+            IsGrounded = true;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
 
     }

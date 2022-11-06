@@ -42,7 +42,7 @@ public class Shooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && canFire)
         {
             GameObject player = GameObject.Find("Player");
-            bool playerOnGround = player.GetComponent<PlayerMovement>().GetIsGrounded();
+            bool playerOnGround = player.GetComponent<PlayerMovement>().IsGrounded;
 
             if (playerOnGround)
             {
