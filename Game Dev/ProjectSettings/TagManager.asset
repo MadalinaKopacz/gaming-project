@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Bullet
   - Rat
+  - player
   layers:
   - Default
   - TransparentFX
