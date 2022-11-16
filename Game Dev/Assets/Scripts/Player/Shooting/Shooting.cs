@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float fireRate;
+    [SerializeField] private Transform player;
 
     private bool canFire = true;
     private float timer;
@@ -28,6 +29,12 @@ public class Shooting : MonoBehaviour
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
+
+        // make player look where he aims
+        if(mousePos.x < player.position.x)
+            player.eulerAngles = new Vector3(0, 180, 0);
+        else
+            player.eulerAngles = new Vector3(0, 0, 0);
 
         if (!canFire)
         {
@@ -53,7 +60,7 @@ public class Shooting : MonoBehaviour
     }
 
     private void Shoot()
-    {
+    {       
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
     }
 }

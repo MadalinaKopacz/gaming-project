@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -64,17 +65,23 @@ public class PlayerMovement : MonoBehaviour
     private void Shoot()
     {
         animator.SetTrigger("shoot");
+        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).tagHash);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.CompareTag("Ground"))
             IsGrounded = true;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             
-        if(collision.gameObject.tag == "Rat")
+        if(collision.gameObject.CompareTag("Rat"))
             IsGrounded = true;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
 
+    }
+
+    private IEnumerator DelayAction(float delay = 0)
+    {
+        yield return new WaitForSeconds(delay);
     }
 }
