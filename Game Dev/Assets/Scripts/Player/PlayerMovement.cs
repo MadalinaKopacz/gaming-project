@@ -12,12 +12,14 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public bool IsGrounded { get; set; }
     public bool IsShooting { get; set; }
+    public bool IsMoving {get; set; }
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         IsShooting = false;
+        IsMoving = false;
     }
 
     private void Update()
@@ -49,6 +51,15 @@ public class PlayerMovement : MonoBehaviour
             IsShooting = false;
         }
 
+        if (direction != 0)
+        {
+            IsMoving = true;
+        }
+        else 
+        {
+            IsMoving = false;
+        }
+
         // set the running animation
         animator.SetBool("isRunning", direction != 0);
         animator.SetBool("isGrounded", IsGrounded);
@@ -62,8 +73,24 @@ public class PlayerMovement : MonoBehaviour
         IsGrounded = false;
     }
 
+    private bool _isPlayerShootingRight()
+    {
+        Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        if(mousePos.x < body.position.x)
+        {
+           return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private void Shoot()
     {
+        // help to decide which animation should be used, left or right facing
+        animator.SetBool("shootDirectionRight", _isPlayerShootingRight());
         animator.SetTrigger("shoot");
         Debug.Log(animator.GetCurrentAnimatorStateInfo(0).tagHash);
     }
