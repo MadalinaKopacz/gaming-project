@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fly : MonoBehaviour
+public class Fly : MonoBehaviour
 {
+
+    [SerializeField] private int hp = 10;
+
     [SerializeField] private List<Transform> points;
     [SerializeField] private int nextID = 0;
     private int idChangeValue = 1;
@@ -75,6 +78,21 @@ public class fly : MonoBehaviour
             if (nextID == 0)
                 idChangeValue = 1;
             nextID += idChangeValue;
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Bullet"))
+        {
+            int damage = 10;
+            hp -= damage;
+
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

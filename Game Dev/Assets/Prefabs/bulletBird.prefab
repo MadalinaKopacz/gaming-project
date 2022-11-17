@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1709593895417931288}
   - component: {fileID: 3589308006353357911}
-  - component: {fileID: 4494424543474088378}
   - component: {fileID: 60055280661689676}
   - component: {fileID: 7140909983096758843}
+  - component: {fileID: 7935317248766781792}
   m_Layer: 0
   m_Name: bulletBird
-  m_TagString: Untagged
+  m_TagString: caca
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4494424543474088378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6952414900927871059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b931fff1c7dc111479b17051fd994b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
 --- !u!50 &60055280661689676
 Rigidbody2D:
   serializedVersion: 4
@@ -137,3 +124,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7935317248766781792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952414900927871059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b931fff1c7dc111479b17051fd994b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
