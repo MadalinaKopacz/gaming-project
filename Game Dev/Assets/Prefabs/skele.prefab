@@ -108,8 +108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6482688910590033598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3654, y: 0.0196, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.3654, y: -0.09944, z: 0}
+  m_LocalScale: {x: 1, y: 0.925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3796858450085586053}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 262034111156068484}
   m_Layer: 0
   m_Name: skeleBoxColl
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
