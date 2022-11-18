@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
+
 
 public class PlayerScript : MonoBehaviour
 {
@@ -78,11 +77,7 @@ public class PlayerScript : MonoBehaviour
             if (hp <= 0)
             {
                 gameOver.SetActive(true);
-                Button menuButton = gameOver.transform.Find("MenuButton").gameObject.GetComponent<Button>();
-                menuButton.onClick.AddListener(() => {
-                    resetStats();
-                    SceneManager.LoadScene(0);
-                });
+
             } 
             else
             {
@@ -96,6 +91,7 @@ public class PlayerScript : MonoBehaviour
         return hp;
     }
 
+
     public int getGold()
     {
         return gold;
@@ -106,8 +102,5 @@ public class PlayerScript : MonoBehaviour
         gold = newGold;
     }
 
-    private void resetStats()
-    {
-        hp = 100;
-    }
+
 }

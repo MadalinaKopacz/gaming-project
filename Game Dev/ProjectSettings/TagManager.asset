@@ -7,8 +7,8 @@ TagManager:
   - Ground
   - Bullet
   - Rat
-  - player
-  - caca
+
+  - ShootingArm
   layers:
   - Default
   - TransparentFX
