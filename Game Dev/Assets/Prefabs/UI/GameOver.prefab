@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3413601847384653233}
@@ -109,6 +110,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2239695785542006266}
@@ -202,6 +204,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+
       - m_Target: {fileID: 4092386622558673371}
         m_TargetAssemblyTypeName: GameOverScript, Assembly-CSharp
         m_MethodName: resetGame
@@ -243,6 +246,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7202510324084529054}
@@ -323,6 +327,7 @@ GameObject:
   - component: {fileID: 3413601847384653233}
   - component: {fileID: 1934270737133263376}
   - component: {fileID: 2062405525772125774}
+
   - component: {fileID: 4092386622558673371}
   m_Layer: 0
   m_Name: GameOver
@@ -341,6 +346,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 896280303043116325}
@@ -391,6 +397,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+
 --- !u!114 &4092386622558673371
 MonoBehaviour:
   m_ObjectHideFlags: 0

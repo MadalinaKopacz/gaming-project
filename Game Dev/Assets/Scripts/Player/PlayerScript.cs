@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
+
 
 public class PlayerScript : MonoBehaviour
 {
@@ -35,10 +37,39 @@ public class PlayerScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         int damage = 40; // to be changed dynamically when more enemies are implemented
+        int damage2 = 20;  // +1
+
+        if (collision.gameObject.CompareTag("caca"))
+        {
+            if (!isHit)
+            {
+                print("hit");
+                hp -= damage2;
+                isHit = true;
+                healthScript.setHealth();
+            }
+            if (hp <= 0)
+            {
+                gameOver.SetActive(true);
+                Button menuButton = gameOver.transform.Find("MenuButton").gameObject.GetComponent<Button>();
+                menuButton.onClick.AddListener(() => {
+                    resetStats();
+                    SceneManager.LoadScene(0);
+                });
+            }
+            else
+            {
+                gameOver.SetActive(false);
+            }
+        }
+
+
         if (collision.gameObject.CompareTag("Rat"))
         {
             if (!isHit)
             {
+                print("hit");
+
                 hp -= damage;
                 isHit = true;
                 healthScript.setHealth();
@@ -46,6 +77,7 @@ public class PlayerScript : MonoBehaviour
             if (hp <= 0)
             {
                 gameOver.SetActive(true);
+
             } 
             else
             {
@@ -59,10 +91,6 @@ public class PlayerScript : MonoBehaviour
         return hp;
     }
 
-    public void setHp(int newHp)
-    {
-        hp = newHp;
-    }
 
     public int getGold()
     {
@@ -73,5 +101,6 @@ public class PlayerScript : MonoBehaviour
     {
         gold = newGold;
     }
+
 
 }
