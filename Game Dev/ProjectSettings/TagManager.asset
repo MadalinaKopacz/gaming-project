@@ -7,7 +7,6 @@ TagManager:
   - Ground
   - Bullet
   - Rat
-
   - ShootingArm
   layers:
   - Default
