@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Rat
   - ShootingArm
+  - caca
+  - bird
   layers:
   - Default
   - TransparentFX
