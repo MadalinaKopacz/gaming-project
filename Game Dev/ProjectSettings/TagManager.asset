@@ -11,6 +11,7 @@ TagManager:
   - Coin
   - caca
   - bird
+  - Mushroom
   layers:
   - Default
   - TransparentFX

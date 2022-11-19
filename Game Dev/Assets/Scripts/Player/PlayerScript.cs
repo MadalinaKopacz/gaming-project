@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private int hp = 100;
     private int gold = 0;
+    private bool inverted = false;
 
     private bool isHit;
     private float timeSinceLastHit;
@@ -36,7 +38,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         int damage = 40; // to be changed dynamically when more enemies are implemented
         if (collision.gameObject.CompareTag("Rat"))
@@ -64,6 +66,15 @@ public class PlayerScript : MonoBehaviour
             currencyScript.setCurrency(gold);
 
         }
+
+        if (collision.gameObject.CompareTag("Mushroom"))
+        {
+            Destroy(collision.gameObject);
+            inverted = true;
+            yield return new WaitForSeconds(5);
+            inverted = false;
+
+        }
     }
 
     public int getHp()
@@ -86,4 +97,18 @@ public class PlayerScript : MonoBehaviour
         gold = newGold;
     }
 
+    public bool getInverted()
+    {
+        return inverted;
+    }
+
+    public void setInverted(bool newValue)
+    {
+        inverted = newValue;
+    }
+
+    private IEnumerator MushroomEffect()
+    {
+        yield return new WaitForSeconds(5);
+    }
 }
