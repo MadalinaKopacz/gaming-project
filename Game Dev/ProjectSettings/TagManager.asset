@@ -9,6 +9,8 @@ TagManager:
   - Rat
   - ShootingArm
   - Coin
+  - caca
+  - bird
   layers:
   - Default
   - TransparentFX
