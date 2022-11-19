@@ -7,6 +7,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject healthBar;
     private HealthBarScript healthScript;
 
+    [SerializeField] private GameObject currency;
+    private CurrencyScript currencyScript;
+
     [SerializeField] private GameObject gameOver;
 
     [SerializeField] private int hp = 100;
@@ -21,6 +24,7 @@ public class PlayerScript : MonoBehaviour
         healthScript = healthBar.GetComponent<HealthBarScript>();
         isHit = false;
         timeSinceLastHit = Time.time;
+        currencyScript = currency.GetComponent<CurrencyScript>();
     }
 
     void Update()
@@ -51,6 +55,14 @@ public class PlayerScript : MonoBehaviour
             {
                 gameOver.SetActive(false);
             }
+        }
+
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            gold = gold + 1;
+            currencyScript.setCurrency(gold);
+
         }
     }
 
