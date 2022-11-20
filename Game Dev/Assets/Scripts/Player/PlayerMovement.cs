@@ -131,4 +131,24 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
     }
+
+    public float getSpeed()
+    {
+        return speed;
+    }
+
+    public float getJumpSize()
+    {
+        return jumpSize;
+    }
+
+    public void setSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    public void setJumpSize(float newJumpSize)
+    {
+        jumpSize = newJumpSize;
+    }
 }

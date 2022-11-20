@@ -12,6 +12,8 @@ TagManager:
   - caca
   - bird
   - Mushroom
+  - obj
+  - Powerup
   layers:
   - Default
   - TransparentFX
