@@ -20,7 +20,7 @@ During the game, the player can collect a currency that can be spent in a shop f
   
 ## LAST STABLE VERSION:
 
-  Our Last Stable Version is found on Production branch of this repository, [here](https://github.com/MadalinaKopacz/gaming-project/tree/production).
+  Our Last Stable Version is found on Production branch of this repository.
   
   
 ## FEEDBACK FORM:
