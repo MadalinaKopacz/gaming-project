@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        bool inverted = playerScript.getInverted();
+        bool inverted = playerScript.Inverted;
         float direction = Input.GetAxis("Horizontal");
 
         if (!inverted)

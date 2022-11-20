@@ -15,11 +15,10 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private int hp = 100;
     private int gold = 0;
-    private bool inverted = false;
-
+    
     private bool isHit;
     private float timeSinceLastHit;
-    
+    public bool Inverted { get; set; }
     
     private void Start()
     {
@@ -27,6 +26,7 @@ public class PlayerScript : MonoBehaviour
         isHit = false;
         timeSinceLastHit = Time.time;
         currencyScript = currency.GetComponent<CurrencyScript>();
+        Inverted = false;
     }
 
     void Update()
@@ -70,9 +70,9 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Mushroom"))
         {
             Destroy(collision.gameObject);
-            inverted = true;
+            Inverted = true;
             yield return new WaitForSeconds(5);
-            inverted = false;
+            Inverted = false;
 
         }
     }
@@ -95,20 +95,5 @@ public class PlayerScript : MonoBehaviour
     public void setGold(int newGold)
     {
         gold = newGold;
-    }
-
-    public bool getInverted()
-    {
-        return inverted;
-    }
-
-    public void setInverted(bool newValue)
-    {
-        inverted = newValue;
-    }
-
-    private IEnumerator MushroomEffect()
-    {
-        yield return new WaitForSeconds(5);
     }
 }
