@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 9033411276905864409}
   m_Layer: 0
   m_Name: stalpBoxColl
-  m_TagString: Ground
+  m_TagString: obj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
