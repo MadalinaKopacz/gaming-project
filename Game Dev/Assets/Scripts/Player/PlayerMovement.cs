@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSize;
     [SerializeField] private float scale;
     [SerializeField] private Transform firePoint;
+    private PlayerScript playerScript;
 
     private Rigidbody2D body;
     private Animator animator;
@@ -20,29 +21,60 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         IsShooting = false;
         IsMoving = false;
+        playerScript = GetComponent<PlayerScript>();
     }
 
     private void Update()
     {
+        bool inverted = playerScript.Inverted;
         float direction = Input.GetAxis("Horizontal");
-        body.velocity = new Vector2(direction * speed, body.velocity.y);
 
-        // flip the player when moving left-right
-        if (direction >= 0)
+        if (!inverted)
         {
-            transform.localScale = scale * Vector3.one;
-            firePoint.localScale = Vector3.one;
+            body.velocity = new Vector2(direction * speed, body.velocity.y);
+
+            // flip the player when moving left-right
+            if (direction >= 0)
+            {
+                transform.localScale = scale * Vector3.one;
+                firePoint.localScale = Vector3.one;
+            }
+            else
+            {
+                transform.localScale = scale * new Vector3(-1, 1, 1);
+                firePoint.localScale = new Vector3(-1, 1, 1);
+            }
+
+            if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) ) && IsGrounded)
+            {
+                Jump();
+            } 
         }
         else
         {
-            transform.localScale = scale * new Vector3(-1, 1, 1);
-            firePoint.localScale = new Vector3(-1, 1, 1);
-        }
+            body.velocity = new Vector2(-direction * speed, body.velocity.y);
 
-        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) ) && IsGrounded)
-        {
-            Jump();
+            // flip the player when moving left-right
+            if (direction >= 0)
+            {
+                transform.localScale = scale * new Vector3(-1, 1, 1);
+                firePoint.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = scale * Vector3.one;
+                firePoint.localScale = Vector3.one;
+            }
+
+            if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && IsGrounded)
+            {
+                Jump();
+            }
         }
+           
+ 
+        
+
         
         if (Input.GetButtonDown("Fire1") && IsGrounded)
         {

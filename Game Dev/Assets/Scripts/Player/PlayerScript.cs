@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -14,10 +15,10 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private int hp = 100;
     private int gold = 0;
-
+    
     private bool isHit;
     private float timeSinceLastHit;
-    
+    public bool Inverted { get; set; }
     
     private void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerScript : MonoBehaviour
         isHit = false;
         timeSinceLastHit = Time.time;
         currencyScript = currency.GetComponent<CurrencyScript>();
+        Inverted = false;
     }
 
     void Update()
@@ -36,7 +38,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         int damage = 40; // to be changed dynamically when more enemies are implemented
         if (collision.gameObject.CompareTag("Rat"))
@@ -64,6 +66,15 @@ public class PlayerScript : MonoBehaviour
             currencyScript.setCurrency(gold);
 
         }
+
+        if (collision.gameObject.CompareTag("Mushroom"))
+        {
+            Destroy(collision.gameObject);
+            Inverted = true;
+            yield return new WaitForSeconds(5);
+            Inverted = false;
+
+        }
     }
 
     public int getHp()
@@ -85,5 +96,4 @@ public class PlayerScript : MonoBehaviour
     {
         gold = newGold;
     }
-
 }
