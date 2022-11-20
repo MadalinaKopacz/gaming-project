@@ -18,6 +18,8 @@ public class Shooting : MonoBehaviour
     private GameObject playerArm;
     private float aimingTimeStamp;
 
+    private Animator animator;
+
     public bool isAiming { get; set; }
 
     void Start()
@@ -28,6 +30,15 @@ public class Shooting : MonoBehaviour
         playerArm = GameObject.Find("/Player/ArmPivot/ArmShoot");
         playerArm.SetActive(false);
         isAiming = false;
+        animator = player.GetComponent<Animator>();
+        animator.SetBool("isAiming", false);
+    }
+
+    private void setAiming(bool value)
+    {
+        isAiming = value;
+        playerArm.SetActive(value);
+        animator.SetBool("isAiming", value);
     }
 
     // Update is called once per frame
@@ -47,30 +58,16 @@ public class Shooting : MonoBehaviour
 
         // make player look where he aims
         // consider aiming when user changed mouse position
-        if (playerMoving || playerShooting)
-        {
-            // other animations are in motion, make sure this is off
-            // so they will not collide
-            isAiming = false;
-            playerArm.SetActive(false);
-        } else if ((mouseDelta.x == 0 && mouseDelta.y == 0) && isAiming == true)
+        if ((mouseDelta.x == 0 && mouseDelta.y == 0) && isAiming == true)
         {
             // check if player just stopped aiming/moving mouse
             if (Time.time - aimingTimeStamp >= aimingTime) 
             {
                 // exit aiming, arm is down
-                playerArm.SetActive(false);
-                isAiming = false;
+                setAiming(false);
             }
         } else if ((mouseDelta.x != 0 || mouseDelta.y != 0) || isAiming == true)
         {
-            // actualize timestamp for the last time player moved mouse
-            aimingTimeStamp = (isAiming == false) ? Time.time : aimingTimeStamp;
-
-            // aiming in motion, arm is shown
-            isAiming = true;
-            playerArm.SetActive(true);
-            
             // flip player to look in the arm direction
             if(mousePos.x < player.position.x)
             {
@@ -80,6 +77,12 @@ public class Shooting : MonoBehaviour
             {
                 player.eulerAngles = new Vector3(0, 0, 0);
             }
+
+            // actualize timestamp for the last time player moved mouse
+            aimingTimeStamp = (isAiming == false) ? Time.time : aimingTimeStamp;
+
+            // aiming in motion, arm is shown
+            setAiming(true);
         } else if (isAiming == false)
         {
             // make sure arm is not shown
@@ -108,9 +111,6 @@ public class Shooting : MonoBehaviour
                 // player started shooting, so animation is in motion
                 // make sure they stop aiming so arm is not shown
                 aimingTimeStamp = Time.time;
-                playerArm.SetActive(false);
-                isAiming = false;
-
                 Invoke("Shoot", 0.4f); 
             }
         }
@@ -119,8 +119,5 @@ public class Shooting : MonoBehaviour
     private void Shoot()
     {       
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
-        // flip character to face right
-        player.eulerAngles = new Vector3(0, 0, 0);
     }
 }
