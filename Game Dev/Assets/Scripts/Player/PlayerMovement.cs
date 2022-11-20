@@ -105,24 +105,8 @@ public class PlayerMovement : MonoBehaviour
         IsGrounded = false;
     }
 
-    private bool _isPlayerShootingRight()
-    {
-        Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        if(mousePos.x < body.position.x)
-        {
-           return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
     private void Shoot()
     {
-        // help to decide which animation should be used, left or right facing
-        animator.SetBool("shootDirectionRight", _isPlayerShootingRight());
         animator.SetTrigger("shoot");
         Debug.Log(animator.GetCurrentAnimatorStateInfo(0).tagHash);
     }
