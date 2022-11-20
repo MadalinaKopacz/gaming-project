@@ -12,6 +12,7 @@ TagManager:
   - caca
   - bird
   - obj
+  - Powerup
   layers:
   - Default
   - TransparentFX
