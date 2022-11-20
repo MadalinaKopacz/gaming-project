@@ -12,7 +12,7 @@ public class BulletBird : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
             Destroy(gameObject);
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
             Destroy(gameObject);
     }
 
