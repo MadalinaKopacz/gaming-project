@@ -15,7 +15,6 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private int hp = 100;
     private int gold = 0;
-    
     public int damagePerHit { get; set; }
 
     private bool isHit;
