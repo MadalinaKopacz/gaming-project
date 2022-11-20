@@ -132,8 +132,12 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground"))
             IsGrounded = true;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-            
-        if(collision.gameObject.CompareTag("Rat"))
+
+        if (collision.gameObject.CompareTag("obj"))
+            IsGrounded = true;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        if (collision.gameObject.CompareTag("Rat"))
             IsGrounded = true;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
 
