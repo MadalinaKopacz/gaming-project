@@ -7,6 +7,7 @@ public class AIPatrol : MonoBehaviour
     [SerializeField] private List<Transform> points;
     [SerializeField] private int nextID = 0;
     private int idChangeValue = 1;
+    private float initialPlayerPositionY;
 
     [SerializeField] private Transform player;
     [SerializeField] private float agroRange;
@@ -38,21 +39,27 @@ public class AIPatrol : MonoBehaviour
         GameObject p2 = new GameObject("Point2"); p2.transform.SetParent(waypoints.transform); p2.transform.position = root.transform.position;
 
         points = new List<Transform> { p1.transform, p2.transform };
+
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        initialPlayerPositionY = player.position.y;
     }
 
     private void Update()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (distanceToPlayer < agroRange)
+        if (distanceToPlayer < agroRange && player.position.y > initialPlayerPositionY + 0.1 && Mathf.Abs(player.position.x - transform.position.x) <1.5)
+        {
+            MoveToNextPoint();
+        } 
+        else if (distanceToPlayer < agroRange)
         {
             ChasePlayer();
-        } 
+        }
         else
         {
             MoveToNextPoint();

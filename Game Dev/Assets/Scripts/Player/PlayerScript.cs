@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
                 gameOver.SetActive(false);
             }
         }
-
+       
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
