@@ -86,7 +86,9 @@ public class Fly : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Bullet"))
         {
-            int damage = 10;
+            // Get damage per hit from player
+            GameObject player = GameObject.Find("Player");
+            int damage = player.GetComponent<PlayerScript>().damagePerHit;
             hp -= damage;
 
             if (hp <= 0)
