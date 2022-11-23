@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -40,9 +41,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    private void checkGameOver()
+    {
+        if (hp <= 0)
+        {
+            gameOver.SetActive(true);
+        }
+        else
+        {
+            gameOver.SetActive(false);
+        }
+    }
+
     private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
-        int damage = 40; // to be changed dynamically when more enemies are implemented
+        int damage = 20; // to be changed dynamically when more enemies are implemented
         if (collision.gameObject.CompareTag("Rat"))
         {
             if (!isHit)
@@ -51,16 +64,20 @@ public class PlayerScript : MonoBehaviour
                 isHit = true;
                 healthScript.setHealth();
             }
-            if (hp <= 0)
-            {
-                gameOver.SetActive(true);
-            } 
-            else
-            {
-                gameOver.SetActive(false);
-            }
+            checkGameOver();
         }
-       
+        int damageBird = 15;
+        if (collision.gameObject.CompareTag("caca"))
+        {
+            Destroy(collision.gameObject);
+            
+            hp -= damageBird;
+            isHit = true;
+            healthScript.setHealth();
+            
+            checkGameOver();
+        }
+
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);

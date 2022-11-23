@@ -5,15 +5,25 @@ using UnityEngine;
 
 public class BulletBird : MonoBehaviour
 {
-   
 
 
-    void OnTriggerEnter2D(Collider2D other)
+
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ground"))
             Destroy(gameObject);
-        if (other.CompareTag("Player"))
+        //if (other.CompareTag("Player"))
+            //Destroy(gameObject);
+    }*/
+
+
+    void  OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
             Destroy(gameObject);
+        }
     }
+
 
 }
