@@ -1240,10 +1240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ce266b55ebf2d45bea2d4cffac123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnRate: 2
   spawnPoints:
   - {fileID: 745089304}
   - {fileID: 212100523}
   monster: {fileID: 3914888886539169, guid: 9e8ecbeaec9080a4b815050fc16c2b5b, type: 3}
+  monsterTag: bird
 --- !u!4 &611458753
 Transform:
   m_ObjectHideFlags: 0

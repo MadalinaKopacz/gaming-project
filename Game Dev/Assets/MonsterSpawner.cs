@@ -6,9 +6,13 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
+    [SerializeField] private float spawnRate = 10f;
+    [SerializeField] private int maxLimitEntities = 3;
+    [SerializeField] private bool continueSpawn = true;
     public Transform[] spawnPoints;
     //public GameObject[] monsters;
     public GameObject monster;
+    public string monsterTag;
     int randomSpawnPoints;
 
     public static bool spawnAllowed;
@@ -18,18 +22,23 @@ public class MonsterSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        birdNumber = GameObject.FindGameObjectsWithTag("bird").Length;
-        print(birdNumber);
+        birdNumber = GameObject.FindGameObjectsWithTag(monsterTag).Length;
         spawnAllowed = true;
-        InvokeRepeating("SpawnMonster", 0f, 10f);
+        InvokeRepeating("SpawnMonster", 0f, spawnRate);
     }
 
     void SpawnMonster()
     {
-        birdNumber = GameObject.FindGameObjectsWithTag("bird").Length;
-        if (birdNumber >= 3)
+        birdNumber = GameObject.FindGameObjectsWithTag(monsterTag).Length;
+        if (birdNumber >= maxLimitEntities)
+        {
             spawnAllowed = false;
-        print(birdNumber);
+        }
+        else if (!spawnAllowed && continueSpawn)
+        {
+            spawnAllowed = true;
+        }
+
         if (spawnAllowed)
         {
             randomSpawnPoints = Random.Range(0, spawnPoints.Length);
