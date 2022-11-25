@@ -106,12 +106,16 @@ public class Shooting : MonoBehaviour
 
             if (playerOnGround)
             {
+                player.GetComponent<PlayerMovement>().IsShooting = true;
+                animator.SetTrigger("shoot");
                 canFire = false;
                 
                 // player started shooting, so animation is in motion
                 // make sure they stop aiming so arm is not shown
                 aimingTimeStamp = Time.time;
                 Invoke("Shoot", 0.4f); 
+                player.GetComponent<PlayerMovement>().IsShooting = false;
+
             }
         }
     }
