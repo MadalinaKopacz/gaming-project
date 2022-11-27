@@ -9,6 +9,7 @@ public class Powerup : MonoBehaviour
     [SerializeField] private float speedAddition;
     [SerializeField] private float jumpAddition;
     [SerializeField] private float powerupDuration;
+    [SerializeField] private int price;
     
 
     public int getHpAddition()
@@ -34,5 +35,10 @@ public class Powerup : MonoBehaviour
     public float getPowerupDuration()
     {
         return powerupDuration;
+    }
+
+    public int getPowerupPrice()
+    {
+        return price;
     }
 }

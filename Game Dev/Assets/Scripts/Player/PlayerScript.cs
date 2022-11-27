@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject gameOver;
 
     [SerializeField] private int hp = 100;
-    private int gold = 0;
+    private int gold = 10;
     public int damagePerHit { get; set; }
 
     private bool isHit;
@@ -30,6 +30,7 @@ public class PlayerScript : MonoBehaviour
         currencyScript = currency.GetComponent<CurrencyScript>();
         damagePerHit = 10;
         Inverted = false;
+        
     }
 
     void Update()
@@ -39,6 +40,7 @@ public class PlayerScript : MonoBehaviour
             isHit = false;
             timeSinceLastHit = Time.time;
         }
+        currencyScript.setCurrency(gold);
     }
 
     private void checkGameOver()
@@ -103,7 +105,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void usePowerup(GameObject powerup)
+    public void usePowerup(GameObject powerup)
     {
         // Hp is added without being removed later
         powerupHp(powerup);
@@ -114,8 +116,11 @@ public class PlayerScript : MonoBehaviour
         float duration = powerup.GetComponent<Powerup>().getPowerupDuration();
 
         // When powerup duration expires restore values back
-        StartCoroutine(restoreValuesPowerup(duration, restoreDamagePerHit, 
-            restoreSpeed, restoreJump));
+        if (duration > 0)
+        {
+            StartCoroutine(restoreValuesPowerup(duration, restoreDamagePerHit, 
+                restoreSpeed, restoreJump));
+        }
     }
 
     IEnumerator restoreValuesPowerup(float delayTime, int oldDamagePerHit, 
