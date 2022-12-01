@@ -8,14 +8,12 @@ public class BulletBird : MonoBehaviour
 
 
 
-    /*void OnTriggerEnter2D(Collider2D other)
+    
+    private void Start()
     {
-        if (other.CompareTag("Ground"))
-            Destroy(gameObject);
-        //if (other.CompareTag("Player"))
-            //Destroy(gameObject);
-    }*/
-
+        GameObject obj = GameObject.FindGameObjectWithTag("obj");
+        Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+    }
 
     void  OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,6 +21,8 @@ public class BulletBird : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
 
 
