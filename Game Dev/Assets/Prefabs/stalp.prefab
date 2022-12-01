@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 9033411276905864411}
   - component: {fileID: 9033411276905864408}
   - component: {fileID: 9033411276905864409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: stalpBoxColl
   m_TagString: obj
   m_Icon: {fileID: 0}

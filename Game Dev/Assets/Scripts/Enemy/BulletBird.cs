@@ -9,10 +9,11 @@ public class BulletBird : MonoBehaviour
 
 
     
-    private void Start()
+    void Start()
     {
-        GameObject obj = GameObject.FindGameObjectWithTag("obj");
-        Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreLayerCollision(6, 7);
+        /*GameObject obj = GameObject.FindGameObjectWithTag("obj");
+        Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>());*/
     }
 
     void  OnCollisionEnter2D(Collision2D collision)

@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 294498145}
   - component: {fileID: 294498144}
   - component: {fileID: 294498147}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: stalpBoxColl
   m_TagString: obj
   m_Icon: {fileID: 0}
@@ -2588,11 +2588,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3914888886539170, guid: 9e8ecbeaec9080a4b815050fc16c2b5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.96
+      value: 5.1
       objectReference: {fileID: 0}
     - target: {fileID: 3914888886539170, guid: 9e8ecbeaec9080a4b815050fc16c2b5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.85
+      value: 2.95
       objectReference: {fileID: 0}
     - target: {fileID: 3914888886539170, guid: 9e8ecbeaec9080a4b815050fc16c2b5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2683,6 +2683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: gunoi
       objectReference: {fileID: 0}
+    - target: {fileID: 6637120000442164335, guid: 0e3104eda45244c47a08b33d5eb82a37, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e3104eda45244c47a08b33d5eb82a37, type: 3}
 --- !u!1001 &7202215503068020023
@@ -2739,6 +2743,10 @@ PrefabInstance:
     - target: {fileID: 7202215503073923269, guid: 07678da4b00914943bde34e91def700e, type: 3}
       propertyPath: m_Name
       value: pubela
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202215503073923269, guid: 07678da4b00914943bde34e91def700e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07678da4b00914943bde34e91def700e, type: 3}
