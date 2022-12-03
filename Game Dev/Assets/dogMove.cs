@@ -22,7 +22,7 @@ public class dogMove : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 4f;
+    private float dashingPower = 1f;
     private float dashingTime = 3f;
     private float dashingCooldown = 2f;
 
