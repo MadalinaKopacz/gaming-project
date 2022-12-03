@@ -58,7 +58,14 @@ public class Shooting : MonoBehaviour
 
         // make player look where he aims
         // consider aiming when user changed mouse position
-        if ((mouseDelta.x == 0 && mouseDelta.y == 0) && isAiming == true)
+        if (playerMoving) 
+        {
+            if (playerShooting == false)
+            {
+                setAiming(false);
+            }
+        }
+        else if ((mouseDelta.x == 0 && mouseDelta.y == 0) && isAiming == true)
         {
             // check if player just stopped aiming/moving mouse
             if (Time.time - aimingTimeStamp >= aimingTime) 
@@ -106,16 +113,30 @@ public class Shooting : MonoBehaviour
 
             if (playerOnGround)
             {
-                player.GetComponent<PlayerMovement>().IsShooting = true;
-                animator.SetTrigger("shoot");
-                canFire = false;
-                
-                // player started shooting, so animation is in motion
-                // make sure they stop aiming so arm is not shown
-                aimingTimeStamp = Time.time;
-                Invoke("Shoot", 0.4f); 
-                player.GetComponent<PlayerMovement>().IsShooting = false;
-
+                if (playerMoving)
+                {
+                    setAiming(true);
+                    player.GetComponent<PlayerMovement>().IsShooting = true;
+                    canFire = false;
+                    
+                    aimingTimeStamp = Time.time;
+                    animator.CrossFade("ShootRunning", 0.4f);
+                    Invoke("Shoot", 0.4f); 
+                    player.GetComponent<PlayerMovement>().IsShooting = false;
+                    setAiming(false);
+                }
+                else 
+                {
+                    player.GetComponent<PlayerMovement>().IsShooting = true;
+                    animator.SetTrigger("shoot");
+                    canFire = false;
+                    
+                    // player started shooting, so animation is in motion
+                    // make sure they stop aiming so arm is not shown
+                    aimingTimeStamp = Time.time;
+                    Invoke("Shoot", 0.4f); 
+                    player.GetComponent<PlayerMovement>().IsShooting = false;
+                }
             }
         }
     }
