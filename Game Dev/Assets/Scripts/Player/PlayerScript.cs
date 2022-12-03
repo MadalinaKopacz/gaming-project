@@ -103,6 +103,12 @@ public class PlayerScript : MonoBehaviour
             usePowerup(collision.gameObject);
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("KillingSlider"))
+        {
+            hp = 0;
+            checkGameOver();
+        }
     }
 
     public void usePowerup(GameObject powerup)
