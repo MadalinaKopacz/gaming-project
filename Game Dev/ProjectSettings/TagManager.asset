@@ -25,9 +25,9 @@ TagManager:
   - caca
   - obj
   - enemy
-  - 
-  - 
-  - 
+  - bullet
+  - powerUps
+  - ground
   - 
   - 
   - 
