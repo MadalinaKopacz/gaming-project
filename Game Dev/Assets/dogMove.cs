@@ -23,7 +23,7 @@ public class dogMove : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 4f;
-    private float dashingTime = 1f;
+    private float dashingTime = 3f;
     private float dashingCooldown = 2f;
 
 
@@ -173,7 +173,7 @@ public class dogMove : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D collision)
+   /* void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
@@ -189,10 +189,10 @@ public class dogMove : MonoBehaviour
             }
         }
 
-    } 
+    } */
 
     
-    /*private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Bullet"))
         {
@@ -206,6 +206,6 @@ public class dogMove : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }*/
+    }
 
 }

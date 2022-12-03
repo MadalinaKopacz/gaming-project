@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7817271419007534655}
   - component: {fileID: 7817271419007534654}
+  - component: {fileID: 7814148195937016416}
   - component: {fileID: 7817271419007534650}
   - component: {fileID: 7817271419007534649}
-  - component: {fileID: 7814148195937016416}
   - component: {fileID: 7814148195747844437}
   m_Layer: 8
   m_Name: dog
@@ -88,6 +88,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7814148195937016416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817271419007534652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9b5f4a31d0a5146b8ae7000870d11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 20
+  points:
+  - {fileID: 7817271420408950629}
+  - {fileID: 7817271419569135156}
+  nextID: 0
+  player: {fileID: 0}
+  agroRange: 4
+  agroDash: 8
+  moveSpeed: 1
+  scale: 4
 --- !u!50 &7817271419007534650
 Rigidbody2D:
   serializedVersion: 4
@@ -135,28 +157,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 0.6}
   m_EdgeRadius: 0
---- !u!114 &7814148195937016416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7817271419007534652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c9b5f4a31d0a5146b8ae7000870d11d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 20
-  points:
-  - {fileID: 7817271420408950629}
-  - {fileID: 7817271419569135156}
-  nextID: 0
-  player: {fileID: 0}
-  agroRange: 4
-  agroDash: 8
-  moveSpeed: 1
-  scale: 4
 --- !u!95 &7814148195747844437
 Animator:
   serializedVersion: 4
