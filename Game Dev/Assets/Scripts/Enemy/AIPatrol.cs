@@ -24,7 +24,7 @@ public class AIPatrol : MonoBehaviour
 
     void Init()
     {
-        //GetComponent<BoxCollider2D>().isTrigger = true;
+        GetComponent<BoxCollider2D>().isTrigger = true;
 
         GameObject root = new GameObject(name + "_Root");
 
