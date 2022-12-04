@@ -22,9 +22,9 @@ public class dogMove : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 1f;
-    private float dashingTime = 3f;
-    private float dashingCooldown = 2f;
+    private float dashingPower = 2f;
+    private float dashingTime = 1f;
+    private float dashingCooldown = 1f;
 
 
 
@@ -63,6 +63,7 @@ public class dogMove : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(7, 8);
         Physics2D.IgnoreLayerCollision(6, 8);
+        Physics2D.IgnoreLayerCollision(8,10);
         print(hp);
         rb = GetComponent<Rigidbody2D>();
         initialPlayerPositionY = player.position.y;
