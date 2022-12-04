@@ -815,6 +815,34 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2029389237}
+    - target: {fileID: 7817271419007534650, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817271419007534655, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.7482615
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817271419007534655, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.6765497
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817271419007534655, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.4207869
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817271419007534655, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.099
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817271419007534655, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.425
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817271419007534655, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 7817271419979315969, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
       propertyPath: m_Name
       value: dogObj
@@ -829,7 +857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7817271419979315970, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9
+      value: -3.12
       objectReference: {fileID: 0}
     - target: {fileID: 7817271419979315970, guid: 810137819271b4344b540bb40dc9f6fb, type: 3}
       propertyPath: m_LocalPosition.z
