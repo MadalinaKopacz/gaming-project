@@ -58,12 +58,9 @@ public class Shooting : MonoBehaviour
 
         // make player look where he aims
         // consider aiming when user changed mouse position
-        if (playerMoving) 
+        if (!player.GetComponent<PlayerMovement>().IsGrounded)
         {
-            if (playerShooting == false)
-            {
-                setAiming(false);
-            }
+            setAiming(false);
         }
         else if ((mouseDelta.x == 0 && mouseDelta.y == 0) && isAiming == true)
         {
@@ -90,10 +87,6 @@ public class Shooting : MonoBehaviour
 
             // aiming in motion, arm is shown
             setAiming(true);
-        } else if (isAiming == false)
-        {
-            // make sure arm is not shown
-            playerArm.SetActive(false);
         }
 
         if (!canFire)
@@ -113,30 +106,12 @@ public class Shooting : MonoBehaviour
 
             if (playerOnGround)
             {
-                if (playerMoving)
-                {
-                    setAiming(true);
-                    player.GetComponent<PlayerMovement>().IsShooting = true;
-                    canFire = false;
-                    
-                    aimingTimeStamp = Time.time;
-                    animator.CrossFade("ShootRunning", 0.4f);
-                    Invoke("Shoot", 0.4f); 
-                    player.GetComponent<PlayerMovement>().IsShooting = false;
-                    setAiming(false);
-                }
-                else 
-                {
-                    player.GetComponent<PlayerMovement>().IsShooting = true;
-                    animator.SetTrigger("shoot");
-                    canFire = false;
-                    
-                    // player started shooting, so animation is in motion
-                    // make sure they stop aiming so arm is not shown
-                    aimingTimeStamp = Time.time;
-                    Invoke("Shoot", 0.4f); 
-                    player.GetComponent<PlayerMovement>().IsShooting = false;
-                }
+                setAiming(true);
+                player.GetComponent<PlayerMovement>().IsShooting = true;
+                animator.SetTrigger("shoot");
+                canFire = false;
+                Invoke("Shoot", 0.4f); 
+                player.GetComponent<PlayerMovement>().IsShooting = false;
             }
         }
     }
