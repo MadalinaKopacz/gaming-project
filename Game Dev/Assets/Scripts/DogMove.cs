@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class dogMove : MonoBehaviour
+public class DogMove : MonoBehaviour
 {
 
     [SerializeField] private int hp = 20;
@@ -20,7 +20,6 @@ public class dogMove : MonoBehaviour
     [SerializeField] private float agroRange;
     [SerializeField] private float agroDash;
 
-    private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 1f;
     private float dashingTime = 3f;
@@ -44,7 +43,7 @@ public class dogMove : MonoBehaviour
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
 
-        GameObject root = new GameObject(name + "_Root");
+        GameObject root = new(name + "_Root");
 
         root.transform.position = transform.position;
         transform.SetParent(root.transform);
@@ -53,8 +52,11 @@ public class dogMove : MonoBehaviour
         waypoints.transform.SetParent(root.transform);
         waypoints.transform.position = root.transform.position;
 
-        GameObject p1 = new GameObject("Point1"); p1.transform.SetParent(waypoints.transform); p1.transform.position = root.transform.position;
-        GameObject p2 = new GameObject("Point2"); p2.transform.SetParent(waypoints.transform); p2.transform.position = root.transform.position;
+        GameObject p1 = new("Point1"); 
+        p1.transform.SetParent(waypoints.transform); p1.transform.position = root.transform.position;
+
+        GameObject p2 = new("Point2"); 
+        p2.transform.SetParent(waypoints.transform); p2.transform.position = root.transform.position;
 
         points = new List<Transform> { p1.transform, p2.transform };
     }
@@ -65,7 +67,6 @@ public class dogMove : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6, 8);
         print(hp);
         rb = GetComponent<Rigidbody2D>();
-        initialPlayerPositionY = player.position.y;
     }
 
     private void Update()
@@ -77,12 +78,9 @@ public class dogMove : MonoBehaviour
         }
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        //print(distanceToPlayer);
-
 
         if (distanceToPlayer < agroRange)
         {
-            //print('2');
             ChasePlayer();
         }
         else if(distanceToPlayer > agroRange && distanceToPlayer < agroDash)
@@ -93,21 +91,6 @@ public class dogMove : MonoBehaviour
         {
             ChasePlayer();
         }
-        /*if (distanceToPlayer < agroRange && player.position.y > initialPlayerPositionY + 0.1 && Mathf.Abs(player.position.x - transform.position.x) < 1.5)
-        {
-            print("1");
-            MoveToNextPoint();
-        }
-        else if (distanceToPlayer < agroRange)
-        {
-            print('2');
-            ChasePlayer();
-        }
-        else
-        {
-            //print("3");
-            MoveToNextPoint();
-        }*/
     }
 
     private void MoveToNextPoint()
@@ -146,8 +129,7 @@ public class dogMove : MonoBehaviour
     private IEnumerator Dash()
     {
         float playerPosX = player.position.x;
-        //print(playerPosX);
-        canDash = false;
+
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0;
@@ -167,29 +149,7 @@ public class dogMove : MonoBehaviour
         isDashing = false;
 
         yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-
-
     }
-
-
-   /* void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            print(hp);
-            // Get damage per hit from player
-            GameObject player = GameObject.Find("Player");
-            int damage = player.GetComponent<PlayerScript>().damagePerHit;
-            hp -= damage;
-            print("ghe");
-            if (hp <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-    } */
 
     
     private void OnTriggerEnter2D(Collider2D collider)
