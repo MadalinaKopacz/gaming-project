@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7202215503073923266}
   - component: {fileID: 7202215503073923267}
   - component: {fileID: 7202215503073923268}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pubela
   m_TagString: obj
   m_Icon: {fileID: 0}

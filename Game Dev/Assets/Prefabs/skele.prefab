@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 6228734543067732865}
   - component: {fileID: 2875406708992877970}
   - component: {fileID: 262034111156068484}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: skeleBoxColl
   m_TagString: obj
   m_Icon: {fileID: 0}
