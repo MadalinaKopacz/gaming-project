@@ -71,17 +71,6 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
             }
         }
-           
- 
-        
-
-        
-        if (Input.GetButtonDown("Fire1") && IsGrounded)
-        {
-            IsShooting = true;
-            Shoot();
-            IsShooting = false;
-        }
 
         if (direction != 0)
         {
@@ -103,12 +92,6 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(body.velocity.x, jumpSize);
         animator.SetTrigger("jump");
         IsGrounded = false;
-    }
-
-    private void Shoot()
-    {
-        animator.SetTrigger("shoot");
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).tagHash);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -44,6 +44,8 @@ public class AIPatrol : MonoBehaviour
 
     void Start()
     {
+        Physics2D.IgnoreLayerCollision(7,8);
+
         rb = GetComponent<Rigidbody2D>();
         initialPlayerPositionY = player.position.y;
     }
@@ -51,6 +53,7 @@ public class AIPatrol : MonoBehaviour
     private void Update()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        
 
         if (distanceToPlayer < agroRange && player.position.y > initialPlayerPositionY + 0.1 && Mathf.Abs(player.position.x - transform.position.x) <1.5)
         {

@@ -40,14 +40,34 @@ public class Rat : MonoBehaviour
         }
     }
 
+    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            // Get damage per hit from player
+            GameObject player = GameObject.Find("Player");
+            int damage = player.GetComponent<PlayerScript>().damagePerHit;
+            hp -= damage;
+
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         if (collision.gameObject.CompareTag("Coin"))
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
 
         if (collision.gameObject.CompareTag("Mushroom"))
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+
+        if (collision.gameObject.CompareTag("Powerup"))
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }

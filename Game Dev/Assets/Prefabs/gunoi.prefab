@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6637120000442164330}
   - component: {fileID: 6637120000442164329}
   - component: {fileID: 6637120000442164328}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: gunoi
   m_TagString: obj
   m_Icon: {fileID: 0}

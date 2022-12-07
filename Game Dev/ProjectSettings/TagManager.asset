@@ -14,6 +14,7 @@ TagManager:
   - Mushroom
   - obj
   - Powerup
+  - KillingSlider
   layers:
   - Default
   - TransparentFX
@@ -21,13 +22,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - caca
+  - obj
+  - enemy
+  - bullet
+  - powerUps
+  - ground
+  - dog
   - 
   - 
   - 

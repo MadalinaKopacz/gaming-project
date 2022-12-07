@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject gameOver;
 
     [SerializeField] private int hp = 100;
-    private int gold = 0;
+    private int gold = 10;
     public int damagePerHit { get; set; }
 
     private bool isHit;
@@ -29,6 +30,7 @@ public class PlayerScript : MonoBehaviour
         currencyScript = currency.GetComponent<CurrencyScript>();
         damagePerHit = 10;
         Inverted = false;
+        
     }
 
     void Update()
@@ -38,11 +40,24 @@ public class PlayerScript : MonoBehaviour
             isHit = false;
             timeSinceLastHit = Time.time;
         }
+        currencyScript.setCurrency(gold);
+    }
+
+    private void checkGameOver()
+    {
+        if (hp <= 0)
+        {
+            gameOver.SetActive(true);
+        }
+        else
+        {
+            gameOver.SetActive(false);
+        }
     }
 
     private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
-        int damage = 40; // to be changed dynamically when more enemies are implemented
+        int damage = 20; // to be changed dynamically when more enemies are implemented
         if (collision.gameObject.CompareTag("Rat"))
         {
             if (!isHit)
@@ -51,16 +66,20 @@ public class PlayerScript : MonoBehaviour
                 isHit = true;
                 healthScript.setHealth();
             }
-            if (hp <= 0)
-            {
-                gameOver.SetActive(true);
-            } 
-            else
-            {
-                gameOver.SetActive(false);
-            }
+            checkGameOver();
         }
-       
+        int damageBird = 15;
+        if (collision.gameObject.CompareTag("caca"))
+        {
+            Destroy(collision.gameObject);
+            
+            hp -= damageBird;
+            isHit = true;
+            healthScript.setHealth();
+            
+            checkGameOver();
+        }
+
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
@@ -84,9 +103,15 @@ public class PlayerScript : MonoBehaviour
             usePowerup(collision.gameObject);
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("KillingSlider"))
+        {
+            hp = 0;
+            checkGameOver();
+        }
     }
 
-    private void usePowerup(GameObject powerup)
+    public void usePowerup(GameObject powerup)
     {
         // Hp is added without being removed later
         powerupHp(powerup);
@@ -97,8 +122,11 @@ public class PlayerScript : MonoBehaviour
         float duration = powerup.GetComponent<Powerup>().getPowerupDuration();
 
         // When powerup duration expires restore values back
-        StartCoroutine(restoreValuesPowerup(duration, restoreDamagePerHit, 
-            restoreSpeed, restoreJump));
+        if (duration > 0)
+        {
+            StartCoroutine(restoreValuesPowerup(duration, restoreDamagePerHit, 
+                restoreSpeed, restoreJump));
+        }
     }
 
     IEnumerator restoreValuesPowerup(float delayTime, int oldDamagePerHit, 
