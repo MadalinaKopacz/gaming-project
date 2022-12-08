@@ -5447,7 +5447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4288859314055470782, guid: f4399aa4325b958428223a28f82e9851, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 456
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4288859314055470782, guid: f4399aa4325b958428223a28f82e9851, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5504,6 +5504,22 @@ PrefabInstance:
     - target: {fileID: 5447067519140588208, guid: f4399aa4325b958428223a28f82e9851, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447067519140588210, guid: f4399aa4325b958428223a28f82e9851, type: 3}
+      propertyPath: m_ScaleFactor
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447067519140588210, guid: f4399aa4325b958428223a28f82e9851, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447067519140588210, guid: f4399aa4325b958428223a28f82e9851, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447067519140588210, guid: f4399aa4325b958428223a28f82e9851, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5447067519140588212, guid: f4399aa4325b958428223a28f82e9851, type: 3}
       propertyPath: m_Pivot.x
