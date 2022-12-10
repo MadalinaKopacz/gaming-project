@@ -1,28 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    [SerializeField] private float transitionSpeed;
-    [SerializeField] private float cameraSpeed;
-   
-    private float currentPosX;
-    private Vector3 velocity = Vector3.zero;
+    [SerializeField] private float followSpeed;
+    [SerializeField] private float yOffeset;
+    [SerializeField] private float xOffeset;
+
+    public Transform target;  // the player
+
+    private void Start()
+    {
+        Vector3 newPos = new Vector3(target.position.x + 2*xOffeset, target.position.y + yOffeset, -10f);
+        transform.position = Vector3.Slerp(transform.position, newPos, followSpeed * Time.deltaTime);
+    }
 
 
     private void Update()
     {
-        transform.position = Vector3.SmoothDamp(
-             transform.position,
-             new Vector3(currentPosX, transform.position.y, transform.position.z),
-             ref velocity,
-             transitionSpeed);
+        Vector3 newPos = new Vector3(target.position.x + xOffeset, target.position.y + yOffeset, -10f);
+        transform.position = Vector3.Slerp(transform.position, newPos, followSpeed * Time.deltaTime);
 
-    }
-
-    public void MoveToNewRoom(Transform newRoom)
-    {
-        currentPosX = newRoom.position.x;    
     }
 }
