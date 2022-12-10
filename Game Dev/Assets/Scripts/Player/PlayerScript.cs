@@ -1,8 +1,6 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -43,7 +41,7 @@ public class PlayerScript : MonoBehaviour
         currencyScript.setCurrency(gold);
     }
 
-    private void checkGameOver()
+    public void checkGameOver()
     {
         if (hp <= 0)
         {
@@ -58,7 +56,8 @@ public class PlayerScript : MonoBehaviour
     private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         int damage = 20; // to be changed dynamically when more enemies are implemented
-        if (collision.gameObject.CompareTag("Rat"))
+        var obstaclesList = new List<string> { "Rat" };
+        if (obstaclesList.Contains(collision.gameObject.tag))
         {
             if (!isHit)
             {

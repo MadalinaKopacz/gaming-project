@@ -16,6 +16,7 @@ TagManager:
   - Powerup
   - KillingSlider
   - Platform
+  - Spike
   layers:
   - Default
   - TransparentFX
