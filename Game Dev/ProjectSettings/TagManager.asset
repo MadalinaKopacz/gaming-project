@@ -15,6 +15,7 @@ TagManager:
   - obj
   - Powerup
   - KillingSlider
+  - Platform
   layers:
   - Default
   - TransparentFX
