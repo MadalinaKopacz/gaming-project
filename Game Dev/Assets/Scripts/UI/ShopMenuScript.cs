@@ -49,7 +49,11 @@ public class ShopMenuScript : MonoBehaviour
 
     public void previousItem()
     {
-        currentIdx = (currentIdx - 1) % items.Count;
+        currentIdx--;
+        if (currentIdx < 0)
+        {
+            currentIdx = items.Count - 1;
+        }
         currentItem = items[currentIdx];
         displayCurrentItem();
     }
