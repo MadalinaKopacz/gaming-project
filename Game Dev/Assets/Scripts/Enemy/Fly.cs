@@ -89,7 +89,7 @@ public class Fly : MonoBehaviour
             print(1);
             // Get damage per hit from player
             GameObject player = GameObject.Find("Player");
-            int damage = player.GetComponent<PlayerScript>().damagePerHit;
+            int damage = player.GetComponent<PlayerScript>().DamagePerHit;
             hp -= damage;
 
             if (hp <= 0)

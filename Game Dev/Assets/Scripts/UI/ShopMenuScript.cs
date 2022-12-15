@@ -26,11 +26,11 @@ public class ShopMenuScript : MonoBehaviour
 
     public void BuyItem()
     {
-        if (playerScript.getGold() >= itemStats.getPowerupPrice())
+        if (playerScript.GetGold() >= itemStats.getPowerupPrice())
         {
             warningText.SetActive(false);
-            playerScript.setGold(playerScript.getGold() - itemStats.getPowerupPrice());
-            playerScript.usePowerup(currentItem);
+            playerScript.SetGold(playerScript.GetGold() - itemStats.getPowerupPrice());
+            playerScript.UsePowerup(currentItem);
             Destroy(currentItem);
             items.RemoveAt(currentIdx);
             NextItem();
@@ -49,7 +49,11 @@ public class ShopMenuScript : MonoBehaviour
 
     public void previousItem()
     {
-        currentIdx = (currentIdx - 1) % items.Count;
+        currentIdx--;
+        if (currentIdx < 0)
+        {
+            currentIdx = items.Count - 1;
+        }
         currentItem = items[currentIdx];
         displayCurrentItem();
     }

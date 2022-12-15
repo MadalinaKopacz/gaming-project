@@ -11,9 +11,9 @@ public class SpikesBehaviour : MonoBehaviour
         {
             var playerStats = player.GetComponent<PlayerScript>();
             var healthBarActions = healthBar.GetComponent<HealthBarScript>();
-            playerStats.setHp(playerStats.getHp() - 5);
+            playerStats.SetHp(playerStats.GetHp() - 5);
             healthBarActions.setHealth();
-            playerStats.checkGameOver();
+            playerStats.CheckGameOver();
         }
     }
 }
