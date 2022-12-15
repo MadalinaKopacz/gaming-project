@@ -44,7 +44,7 @@ public class AIPatrol : MonoBehaviour
 
     void Start()
     {
-        Physics2D.IgnoreLayerCollision(7,8);
+        //Physics2D.IgnoreLayerCollision(7,8);
 
         rb = GetComponent<Rigidbody2D>();
         initialPlayerPositionY = player.position.y;
