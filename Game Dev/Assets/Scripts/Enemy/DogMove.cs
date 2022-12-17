@@ -159,7 +159,7 @@ public class DogMove : MonoBehaviour
         {
             // Get damage per hit from player
             GameObject player = GameObject.Find("Player");
-            int damage = player.GetComponent<PlayerScript>().DamagePerHit;
+            int damage = player.GetComponent<PlayerScript>().getDamagePerHit();
             hp -= damage;
 
             if (hp <= 0)
