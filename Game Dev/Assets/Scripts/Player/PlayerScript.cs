@@ -80,7 +80,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         int damageDog = 25;
-        if (collision.gameObject.CompareTag("bird"))
+        if (collision.gameObject.CompareTag("Dog"))
         {
             if (!isHit)
             {
