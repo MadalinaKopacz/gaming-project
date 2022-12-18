@@ -116,8 +116,18 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    private AudioClip SoundRoulette()
+    {
+        if (Random.value == 1f - Random.value)
+        {
+            return player.GetComponent<PlayerScript>().easter;
+        }
+        return player.GetComponent<PlayerScript>().shootSound;
+    }
+
     private void Shoot()
-    {       
+    {   
+        player.GetComponent<PlayerScript>().playSound(SoundRoulette(), 0.02f);    
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
     }
 }

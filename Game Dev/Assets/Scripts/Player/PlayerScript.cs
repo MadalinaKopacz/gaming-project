@@ -19,7 +19,15 @@ public class PlayerScript : MonoBehaviour
     private bool isHit;
     private float timeSinceLastHit;
     public bool Inverted { get; set; }
-    
+
+    private AudioSource soundPlayer1;
+    private AudioSource soundPlayer2;
+    public AudioClip shootSound;
+    public AudioClip easter;
+    public AudioClip hurtSound;
+    public AudioClip downgradeSound;
+    public AudioClip upgradeSound;
+
     private void Start()
     {
         healthScript = healthBar.GetComponent<HealthBarScript>();
@@ -28,7 +36,8 @@ public class PlayerScript : MonoBehaviour
         currencyScript = currency.GetComponent<CurrencyScript>();
         DamagePerHit = 10;
         Inverted = false;
-        
+        soundPlayer1 = GetComponents<AudioSource>()[0];
+        soundPlayer2 = GetComponents<AudioSource>()[1];
     }
 
     void Update()
@@ -53,6 +62,20 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void playSound(AudioClip clip, float volume=0.02f)
+    {
+        if (!soundPlayer1.isPlaying)
+        {
+            soundPlayer1.volume = volume;
+            soundPlayer1.clip = clip;
+            soundPlayer1.Play();
+        } else if (!soundPlayer2.isPlaying) {
+            soundPlayer2.volume = volume;
+            soundPlayer2.clip = clip;
+            soundPlayer2.Play();
+        }
+    }
+
     private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         int damage = 20; // to be changed dynamically when more enemies are implemented
@@ -63,6 +86,7 @@ public class PlayerScript : MonoBehaviour
             {
                 hp -= damage;
                 isHit = true;
+                playSound(hurtSound, 0.02f);
                 healthScript.setHealth();
             }
             CheckGameOver();
@@ -74,6 +98,7 @@ public class PlayerScript : MonoBehaviour
             
             hp -= damageBird;
             isHit = true;
+            playSound(hurtSound, 0.02f);
             healthScript.setHealth();
             
             CheckGameOver();
@@ -93,10 +118,10 @@ public class PlayerScript : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Coin"))
         {
+            playSound(collision.gameObject.GetComponent<AudioSource>().clip, 0.02f);
             Destroy(collision.gameObject);
             gold++;
             currencyScript.setCurrency(gold);
-
         }
 
         if (collision.gameObject.CompareTag("Mushroom"))
@@ -131,6 +156,11 @@ public class PlayerScript : MonoBehaviour
 
     public void UsePowerup(GameObject powerup, bool isDownGrade = false)
     {
+        if (!isDownGrade) {
+            playSound(upgradeSound);
+        } else {
+            playSound(downgradeSound);
+        }
         // Hp is added without being removed later
         PowerupHp(powerup, isDownGrade);
         int restoreDamagePerHit = PowerupDamage(powerup, isDownGrade);
