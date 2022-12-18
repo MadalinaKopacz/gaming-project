@@ -12,6 +12,8 @@ public class BulletBird : MonoBehaviour
     void Start()
     {
         Physics2D.IgnoreLayerCollision(6, 7);
+        Physics2D.IgnoreLayerCollision(6, 8);
+
         Physics2D.IgnoreLayerCollision(6, 10);
 
 
