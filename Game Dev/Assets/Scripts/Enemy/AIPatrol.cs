@@ -16,7 +16,6 @@ public class AIPatrol : MonoBehaviour
     [SerializeField] private int scale = 4;
 
     private Rigidbody2D rb;
-    private AudioSource enemySound;
 
     private void Reset()
     {
@@ -50,29 +49,6 @@ public class AIPatrol : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         initialPlayerPositionY = player.position.y;
-        enemySound = GetComponent<AudioSource>();
-    }
-
-    private void playSound()
-    {
-        if (enemySound != null)
-        {
-            if (!enemySound.isPlaying) 
-            {
-               enemySound.Play();
-            }
-        }
-    }
-
-    private void stopSound()
-    {
-        if (enemySound != null)
-        {
-            if (enemySound.isPlaying) 
-            {
-               enemySound.Stop();
-            }        
-        }
     }
 
     private void Update()
@@ -97,7 +73,6 @@ public class AIPatrol : MonoBehaviour
     private void MoveToNextPoint()
     {
         alert.SetActive(false);
-        stopSound();
         Transform goalPoint = points[nextID];
         if (goalPoint.transform.position.x > transform.position.x)
             transform.localScale = scale * new Vector2(-1, 1);
@@ -118,7 +93,6 @@ public class AIPatrol : MonoBehaviour
     private void ChasePlayer()
     {
         alert.SetActive(true);
-        playSound();
         if (transform.position.x < player.position.x)
         {
             rb.velocity = new Vector2(moveSpeed, 0);
