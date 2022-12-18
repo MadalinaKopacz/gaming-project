@@ -7,10 +7,12 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField] private float spawnRate = 10f;
-    [SerializeField] private int maxLimitEntities = 3;
+    [SerializeField] private int maxLimitEntities;
     [SerializeField] private bool continueSpawn = true;
     public Transform[] spawnPoints;
-    //public GameObject[] monsters;
+
+    public GameObject cage;
+
     public GameObject monster;
     public string monsterTag;
     int randomSpawnPoints;
@@ -23,6 +25,10 @@ public class MonsterSpawner : MonoBehaviour
     void Start()
     {
         birdNumber = GameObject.FindGameObjectsWithTag(monsterTag).Length;
+        //print(birdNumber);
+        int nr = numberOfObjectsSpawned();
+        birdNumber = nr;
+        print(nr);
         spawnAllowed = true;
         InvokeRepeating("SpawnMonster", 0f, spawnRate);
     }
@@ -30,6 +36,12 @@ public class MonsterSpawner : MonoBehaviour
     void SpawnMonster()
     {
         birdNumber = GameObject.FindGameObjectsWithTag(monsterTag).Length;
+        //print(birdNumber);
+
+        int nr = numberOfObjectsSpawned();
+        print(nr);
+        birdNumber = nr; 
+
         if (birdNumber >= maxLimitEntities)
         {
             spawnAllowed = false;
@@ -42,7 +54,29 @@ public class MonsterSpawner : MonoBehaviour
         if (spawnAllowed)
         {
             randomSpawnPoints = Random.Range(0, spawnPoints.Length);
-            Instantiate(monster, spawnPoints[randomSpawnPoints].position, Quaternion.identity);
+
+            var newObj = Instantiate(monster, spawnPoints[randomSpawnPoints].position, Quaternion.identity);
+            //newObj.transform.parent = GameObject.Find("BirdCage1").transform;
+            newObj.transform.parent = cage.transform;
         }
     }
+
+    int numberOfObjectsSpawned()
+    {
+        int nr = 0;
+        //GameObject cage = GameObject.Find("BirdCage1");
+        Transform t = cage.transform;
+        foreach (Transform tr in t)
+        {
+            if (tr.tag == monsterTag)
+            {
+                nr++;
+            }
+            
+               
+        }
+        return nr;
+    }
+
+   
 }
