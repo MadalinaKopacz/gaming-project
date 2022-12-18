@@ -79,6 +79,18 @@ public class PlayerScript : MonoBehaviour
             CheckGameOver();
         }
 
+        int damageDog = 25;
+        if (collision.gameObject.CompareTag("Dog"))
+        {
+            if (!isHit)
+            {
+                hp -= damageDog;
+                isHit = true;
+                healthScript.setHealth();
+            }
+            CheckGameOver();
+        }
+
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);

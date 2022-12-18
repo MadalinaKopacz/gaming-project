@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7814148195747844437}
   m_Layer: 8
   m_Name: dog
-  m_TagString: bird
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
