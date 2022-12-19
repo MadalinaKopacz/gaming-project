@@ -18,8 +18,6 @@ public class MainMenuScript : MonoBehaviour
 
     public void quitGame()
     {
-        // Auto save quit game
-        DataManager.SaveJsonData();    
         Debug.Log("Quit");
         Application.Quit();
     }

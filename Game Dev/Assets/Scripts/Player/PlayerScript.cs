@@ -226,7 +226,6 @@ public class PlayerScript : MonoBehaviour
         // Get speed bonus from powerup and add it
         // return the old value 
         float addSpeed = powerup.GetComponent<Powerup>().getSpeedAddition();
-        Debug.Log(addSpeed);
         float beforePowerup = GetComponent<PlayerMovement>().getSpeed();
         if (addSpeed > 0)
         {

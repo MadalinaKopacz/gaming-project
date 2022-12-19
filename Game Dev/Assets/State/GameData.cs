@@ -147,11 +147,6 @@ public class GameData:MonoBehaviour
         GameObject ui = FindGameObjectInScene("UI");
         GameObject shopItemList = FindGameObjectInScene("ItemsList");
 
-        // Delete default items
-        foreach (Transform child in shopItemList.transform) {
-            GameObject.Destroy(child.gameObject);
-        }
-
         List<GameObject> newItems = new List<GameObject>();
         // Load only saved items
         foreach (PowerupData powerupData in shopItems) {

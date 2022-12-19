@@ -325,6 +325,8 @@ MonoBehaviour:
   currency: {fileID: 0}
   gameOver: {fileID: 0}
   hp: 100
+  gold: 10
+  damagePerHit: 10
   shootSound: {fileID: 8300000, guid: 20dcbf15972605b48a62fce2597b98ee, type: 3}
   easter: {fileID: 8300000, guid: 2d9fbd34fa92cd943ac6099420f5d0a2, type: 3}
   hurtSound: {fileID: 8300000, guid: 3957405ff480ac147a614b2d82743b6d, type: 3}
