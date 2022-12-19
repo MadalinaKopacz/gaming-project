@@ -35,6 +35,7 @@ During the game, the player can collect a currency that can be spent in a shop f
     - [ObjectivesReport2.pdf](https://github.com/MadalinaKopacz/gaming-project/files/9946404/ObjectivesReport2.2.pdf)
     - [ObjectivesReport3.pdf](https://github.com/MadalinaKopacz/gaming-project/files/10050927/ObjectivesReport3.pdf)
     - [ObjectivesReport4.pdf](https://github.com/MadalinaKopacz/gaming-project/files/10153127/ObjectivesReport4.2.pdf)
+    - [ObjectivesReport5.pdf](https://github.com/MadalinaKopacz/gaming-project/files/10255506/ObjectivesReport5.pdf)
 
 
 
