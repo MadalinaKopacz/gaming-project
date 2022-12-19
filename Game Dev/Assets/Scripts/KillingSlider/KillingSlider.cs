@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 
 public class KillingSlider : MonoBehaviour
 {
@@ -8,10 +10,12 @@ public class KillingSlider : MonoBehaviour
     [SerializeField] private float maxIdleTime = 7; // 7 seconds
     [SerializeField] private float maxLevelTime = 2 * 60; // 2 mins
     private Vector3 end;
+    private Vector3 start;
     private float startTime;
     private float startIdle;
     private bool isIdle;
     private Animator animator;
+    private AudioSource sound;
 
     private void Start() 
     {
@@ -19,6 +23,7 @@ public class KillingSlider : MonoBehaviour
         startTime = Time.time;
         animator = GameObject.Find("Player").GetComponent<Animator>();
         isIdle = false;
+        sound = GetComponent<AudioSource>();
     }
 
 
@@ -36,33 +41,55 @@ public class KillingSlider : MonoBehaviour
 
     void Update() 
     {
-        float currentTime = Time.time;
+        //  If slider is in view nothing can stop it 😈
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+        if (!(viewPos.x > -0.15 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0))
+        {
+            float currentTime = Time.time;
 
-        if (!checkIdle())
-        {
-            // Player moved
-            isIdle = false; 
-        }
-        else if (checkIdle() && !isIdle)
-        {
-            // Player entered idle state
-            isIdle = true;
-            startIdle = currentTime;
-        }
-        
-        if (isIdle)
-        {
-            if (currentTime - startIdle >= maxIdleTime)
+            if (!checkIdle())
             {
+                // Player moved
+                isIdle = false; 
+            }
+            else if (checkIdle() && !isIdle)
+            {
+                // Player entered idle state
+                isIdle = true;
+                startIdle = currentTime;
+            }
+            
+            // In case slider enters camera view, don't stop.
+            if (isIdle)
+            {
+                if (currentTime - startIdle >= maxIdleTime)
+                {
+                    if (!sound.isPlaying) {
+                        sound.Play();
+                    }
+                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, end, movingSpeed);
+                }
+            }
+
+
+            if (currentTime - startTime >= maxLevelTime)
+            {
+                if (!sound.isPlaying) {
+                    sound.Play();
+                }
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, end, movingSpeed);
             }
+
         }
-
-
-        if (currentTime - startTime >= maxLevelTime)
-        {
+        else {
             gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, end, movingSpeed);
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) {
+            sound.Stop();
+        } 
     }
 }
