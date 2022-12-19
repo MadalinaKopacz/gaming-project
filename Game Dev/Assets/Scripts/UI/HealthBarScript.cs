@@ -21,13 +21,13 @@ public class HealthBarScript : MonoBehaviour
 
     public void setMaxHealth()
     {
-        slider.maxValue = playerStats.getHp();
-        slider.value = playerStats.getHp();
+        slider.maxValue = playerStats.GetHp();
+        slider.value = playerStats.GetHp();
     }
 
     public void setHealth()
     {
-        healthText.text = playerStats.getHp() + "/100"; 
-        slider.value = playerStats.getHp();
+        healthText.text = playerStats.GetHp() + "/100"; 
+        slider.value = playerStats.GetHp();
     }
 }

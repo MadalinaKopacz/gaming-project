@@ -8,7 +8,7 @@ public class ShopMenuScript : MonoBehaviour
 {
     [SerializeField] private GameObject shopMenuUI;
     [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private List<GameObject> items;
+    private List<GameObject> items;
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private PlayerScript playerScript;
     [SerializeField] private GameObject warningText;
@@ -17,20 +17,58 @@ public class ShopMenuScript : MonoBehaviour
     private GameObject currentItem;
     private Powerup itemStats;
 
+    // Problem: when the list "items" should be emptied and new ones added
+    // only the objects get destroyed, the reference in the array stays
+    // so error MissingReferenceException: The variable items of ShopMenuScript doesn't exist anymore.
+    // You probably need to reassign the items variable of the 'ShopMenuScript' script in the inspector.
+
+    public void setItems(List<GameObject> newItems)
+    {
+        if (items != null && items.Count > 0) {
+            foreach(GameObject u in items) {
+                Destroy(u);
+            }
+            items.Clear();
+        }
+
+        items = new List<GameObject>();
+        foreach(GameObject go in newItems) 
+        {
+            items.Add(go);
+        }
+
+        currentIdx = 0;
+        currentItem = items[0];
+
+        itemStats = currentItem.GetComponent<Powerup>();
+        priceText.SetText(itemStats.getPowerupPrice().ToString());
+        displayCurrentItem();
+    }
+
     private void Start()
     {
+        items = new List<GameObject>();
+        GameObject wrapper = GameData.FindGameObjectInScene("ItemsList");
+        foreach (Transform child in wrapper.transform)
+        {
+            child.gameObject.SetActive(false);
+            items.Add(child.gameObject);
+        }
+        
+        currentIdx = 0;
         currentItem = items[0];
+        currentItem.SetActive(true);
         itemStats = currentItem.GetComponent<Powerup>();
         priceText.SetText(itemStats.getPowerupPrice().ToString());
     }
 
     public void BuyItem()
     {
-        if (playerScript.getGold() >= itemStats.getPowerupPrice())
+        if (playerScript.GetGold() >= itemStats.getPowerupPrice())
         {
             warningText.SetActive(false);
-            playerScript.setGold(playerScript.getGold() - itemStats.getPowerupPrice());
-            playerScript.usePowerup(currentItem);
+            playerScript.SetGold(playerScript.GetGold() - itemStats.getPowerupPrice());
+            playerScript.UsePowerup(currentItem);
             Destroy(currentItem);
             items.RemoveAt(currentIdx);
             NextItem();
@@ -49,7 +87,11 @@ public class ShopMenuScript : MonoBehaviour
 
     public void previousItem()
     {
-        currentIdx = (currentIdx - 1) % items.Count;
+        currentIdx--;
+        if (currentIdx < 0)
+        {
+            currentIdx = items.Count - 1;
+        }
         currentItem = items[currentIdx];
         displayCurrentItem();
     }
@@ -71,5 +113,10 @@ public class ShopMenuScript : MonoBehaviour
         }
         priceText.SetText(itemStats.getPowerupPrice().ToString());
         currentItem.SetActive(true);
+    }
+
+    public List<GameObject> getItems()
+    {
+        return new List<GameObject>(items);
     }
 }

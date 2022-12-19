@@ -19,6 +19,6 @@ public class GameOverScript : MonoBehaviour
 
     private void resetStats()
     {
-        playerStats.setHp(100);
+        playerStats.SetHp(100);
     }
 }

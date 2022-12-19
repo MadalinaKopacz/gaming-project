@@ -68,6 +68,7 @@ public class DogMove : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8,10);
         print(hp);
         rb = GetComponent<Rigidbody2D>();
+        initialPlayerPositionY = player.position.y;
     }
 
     private void Update()
@@ -80,7 +81,11 @@ public class DogMove : MonoBehaviour
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (distanceToPlayer < agroRange)
+        if (distanceToPlayer < agroRange && player.position.y > initialPlayerPositionY + 0.1 && Mathf.Abs(player.position.x - transform.position.x) < 1.5)
+        {
+            MoveToNextPoint();
+        }
+        else if (distanceToPlayer < agroRange)
         {
             ChasePlayer();
         }
@@ -90,7 +95,7 @@ public class DogMove : MonoBehaviour
         }
         else
         {
-            ChasePlayer();
+            MoveToNextPoint();
         }
     }
 
@@ -159,7 +164,7 @@ public class DogMove : MonoBehaviour
         {
             // Get damage per hit from player
             GameObject player = GameObject.Find("Player");
-            int damage = player.GetComponent<PlayerScript>().damagePerHit;
+            int damage = player.GetComponent<PlayerScript>().getDamagePerHit();
             hp -= damage;
 
             if (hp <= 0)

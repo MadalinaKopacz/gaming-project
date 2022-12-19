@@ -5,17 +5,21 @@ public class MainMenuScript : MonoBehaviour
 {
     public void newGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Assets/Scenes/Level1.unity");
     }
 
     public void loadGame()
     {
-        //to be continued when save game feature is implemented
-        SceneManager.LoadScene(1);
+        if (!DataManager.LoadJsonData())
+        {
+            newGame();
+        }
     }
 
     public void quitGame()
     {
+        // Auto save quit game
+        DataManager.SaveJsonData();    
         Debug.Log("Quit");
         Application.Quit();
     }

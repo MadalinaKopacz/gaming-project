@@ -96,11 +96,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
             IsGrounded = true;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
 
-        if (collision.gameObject.CompareTag("obj"))
+        if (collision.gameObject.CompareTag("obj") || collision.gameObject.CompareTag("Platform"))
             IsGrounded = true;
         transform.localRotation = Quaternion.Euler(0, 0, 0);
 

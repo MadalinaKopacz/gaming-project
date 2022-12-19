@@ -15,6 +15,10 @@ TagManager:
   - obj
   - Powerup
   - KillingSlider
+  - Platform
+  - Spike
+  - Downgrade
+  - Dog
   layers:
   - Default
   - TransparentFX

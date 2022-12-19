@@ -22,7 +22,7 @@ public class Rat : MonoBehaviour
         {
             // Get damage per hit from player
             GameObject player = GameObject.Find("Player");
-            int damage = player.GetComponent<PlayerScript>().damagePerHit;
+            int damage = player.GetComponent<PlayerScript>().getDamagePerHit();
             hp -= damage;
 
             if (hp <= 0)
@@ -48,7 +48,7 @@ public class Rat : MonoBehaviour
         {
             // Get damage per hit from player
             GameObject player = GameObject.Find("Player");
-            int damage = player.GetComponent<PlayerScript>().damagePerHit;
+            int damage = player.GetComponent<PlayerScript>().getDamagePerHit();
             hp -= damage;
 
             if (hp <= 0)
