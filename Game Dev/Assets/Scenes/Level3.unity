@@ -980,6 +980,7 @@ GameObject:
   - component: {fileID: 174785954}
   - component: {fileID: 174785955}
   - component: {fileID: 174785956}
+  - component: {fileID: 174785957}
   m_Layer: 10
   m_Name: beer
   m_TagString: Downgrade
@@ -1072,6 +1073,32 @@ MonoBehaviour:
   jumpAddition: 3
   powerupDuration: 5
   price: 0
+--- !u!61 &174785957
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174785953}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.02, y: 4.97}
+    newSize: {x: 5.02, y: 4.97}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.02, y: 4.97}
+  m_EdgeRadius: 0
 --- !u!1001 &187592001
 PrefabInstance:
   m_ObjectHideFlags: 0
