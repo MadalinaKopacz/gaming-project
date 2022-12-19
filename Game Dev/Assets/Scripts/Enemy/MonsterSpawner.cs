@@ -28,7 +28,6 @@ public class MonsterSpawner : MonoBehaviour
         //print(birdNumber);
         int nr = numberOfObjectsSpawned();
         birdNumber = nr;
-        print(nr);
         spawnAllowed = true;
         InvokeRepeating("SpawnMonster", 0f, spawnRate);
     }
@@ -39,7 +38,6 @@ public class MonsterSpawner : MonoBehaviour
         //print(birdNumber);
 
         int nr = numberOfObjectsSpawned();
-        print(nr);
         birdNumber = nr; 
 
         if (birdNumber >= maxLimitEntities)
