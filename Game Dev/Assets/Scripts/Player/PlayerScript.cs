@@ -13,8 +13,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject gameOver;
 
     [SerializeField] private int hp = 100;
-    private int gold = 10;
-    public int DamagePerHit { get; set; }
+    [SerializeField] private int gold = 10;
+    [SerializeField] public int damagePerHit;
 
     private bool isHit;
     private float timeSinceLastHit;
@@ -27,14 +27,14 @@ public class PlayerScript : MonoBehaviour
     public AudioClip hurtSound;
     public AudioClip downgradeSound;
     public AudioClip upgradeSound;
-
+    
     private void Start()
     {
         healthScript = healthBar.GetComponent<HealthBarScript>();
         isHit = false;
         timeSinceLastHit = Time.time;
         currencyScript = currency.GetComponent<CurrencyScript>();
-        DamagePerHit = 10;
+        damagePerHit = 10;
         Inverted = false;
         soundPlayer1 = GetComponents<AudioSource>()[0];
         soundPlayer2 = GetComponents<AudioSource>()[1];
@@ -184,7 +184,7 @@ public class PlayerScript : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         
         // Restore values
-        DamagePerHit = oldDamagePerHit;
+        damagePerHit = oldDamagePerHit;
         GetComponent<PlayerMovement>().setSpeed(oldSpeed);
         GetComponent<PlayerMovement>().setJumpSize(oldJumpSize);
     }
@@ -210,15 +210,15 @@ public class PlayerScript : MonoBehaviour
         int addDamage = powerup.GetComponent<Powerup>().getDamageAddition();
         if (addDamage > 0)
         {
-            int beforePowerup = DamagePerHit;
+            int beforePowerup = damagePerHit;
             if (!isDownGrade)
-                DamagePerHit += addDamage;
+                damagePerHit += addDamage;
             else 
-                DamagePerHit -= addDamage;
+                damagePerHit -= addDamage;
 
             return beforePowerup;
         }
-        return DamagePerHit;
+        return damagePerHit;
     }
 
     private float PowerupSpeed(GameObject powerup, bool isDownGrade = false)
@@ -272,5 +272,15 @@ public class PlayerScript : MonoBehaviour
     public void SetGold(int newGold)
     {
         gold = newGold;
+    }
+
+    public int getDamagePerHit()
+    {
+        return damagePerHit;
+    }
+
+    public void setDamagePerHit(int newDamagePerHit)
+    {
+        damagePerHit = newDamagePerHit;
     }
 }
