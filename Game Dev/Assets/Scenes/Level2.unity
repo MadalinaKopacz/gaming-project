@@ -3073,6 +3073,22 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 2005568104}
+    - target: {fileID: 1392791449595459540, guid: f4399aa4325b958428223a28f82e9851, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 101.9512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392791449595459540, guid: f4399aa4325b958428223a28f82e9851, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80.596
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392791449595459540, guid: f4399aa4325b958428223a28f82e9851, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.59069824
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392791449595459540, guid: f4399aa4325b958428223a28f82e9851, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.7022095
+      objectReference: {fileID: 0}
     - target: {fileID: 2366228978969179370, guid: f4399aa4325b958428223a28f82e9851, type: 3}
       propertyPath: m_SizeDelta.x
       value: 50
