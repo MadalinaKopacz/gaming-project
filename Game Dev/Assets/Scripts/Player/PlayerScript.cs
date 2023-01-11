@@ -42,6 +42,15 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        if (Time.time == 0)
+        {
+            PauseSound();
+        } 
+        if (Time.time == 1)
+        {
+            UnpauseSound();
+        }
+
         if (Time.time >= timeSinceLastHit + 0.8f)
         {
             isHit = false;
@@ -73,6 +82,49 @@ public class PlayerScript : MonoBehaviour
             soundPlayer2.volume = volume;
             soundPlayer2.clip = clip;
             soundPlayer2.Play();
+        }
+    }
+
+    public void PauseSound()
+    {
+        if (soundPlayer1.isPlaying)
+        {
+            soundPlayer1.Pause();
+        } 
+
+        if (soundPlayer2.isPlaying) {
+            soundPlayer2.Pause();
+        } 
+
+        if (GameObject.Find("BackgroundSoundPlayer") != null )
+        {
+            AudioSource bck = GameObject.Find("BackgroundSoundPlayer").GetComponent<AudioSource>();
+            if (bck.isPlaying) 
+            {
+                bck.Pause();
+            }
+        }
+    }
+
+    public void UnpauseSound()
+    {
+        if (!soundPlayer1.isPlaying)
+        {
+            soundPlayer1.Play();
+        } 
+
+        if (!soundPlayer2.isPlaying) 
+        {
+            soundPlayer2.Play();
+        } 
+
+        if (GameObject.Find("BackgroundSoundPlayer")  != null )
+        {
+            AudioSource bck = GameObject.Find("BackgroundSoundPlayer").GetComponent<AudioSource>();
+            if (!bck.isPlaying) 
+            {
+                bck.Play();
+            }
         }
     }
 
